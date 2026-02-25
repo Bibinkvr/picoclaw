@@ -1,7 +1,7 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
   "deploy": {
-    "startCommand": "sh /home/picoclaw/docker-entrypoint.sh",
+    "startCommand": "sh -c 'mkdir -p /home/picoclaw/.picoclaw && echo \"{\\\"agents\\\":{\\\"defaults\\\":{\\\"model_name\\\":\\\"mymodel\\\",\\\"workspace\\\":\\\"/home/picoclaw/.picoclaw/workspace\\\",\\\"max_tokens\\\":8192,\\\"temperature\\\":0.7,\\\"max_tool_iterations\\\":20}},\\\"model_list\\\":[{\\\"model_name\\\":\\\"mymodel\\\",\\\"model\\\":\\\"$LLM_MODEL\\\",\\\"api_key\\\":\\\"$LLM_API_KEY\\\"}],\\\"channels\\\":{\\\"telegram\\\":{\\\"enabled\\\":true,\\\"token\\\":\\\"$TELEGRAM_TOKEN\\\",\\\"allow_from\\\":[$TELEGRAM_ALLOW_FROM]}},\\\"tools\\\":{\\\"web\\\":{\\\"duckduckgo\\\":{\\\"enabled\\\":true,\\\"max_results\\\":5}}}}\" > /home/picoclaw/.picoclaw/config.json && picoclaw gateway'",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 3
   }
